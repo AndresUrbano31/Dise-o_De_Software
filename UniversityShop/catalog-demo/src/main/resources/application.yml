@@ -1,0 +1,51 @@
+# ================================================================
+#  PERFIL: default (local / MongoDB local)
+#  Vista de Despliegue: nodo "Workstation Developer"
+# ================================================================
+#  Usar cuando: desarrollo local.
+#  Arrancar con: ./mvnw spring-boot:run
+#  Para usar Atlas local: export MONGODB_URI="mongodb+srv://..."
+# ================================================================
+
+spring:
+  application:
+    name: product-catalog-demo
+
+  # ── MongoDB (local o Atlas via variable de entorno) ───────────
+  data:
+    mongodb:
+      uri: mongodb+srv://catalog_user:t79FvPKdVei4ujse@biblioteca-cluster.xm2z9kq.mongodb.net/catalog_demo?retryWrites=true&w=majority&appName=biblioteca-cluster
+      auto-index-creation: true
+
+  # ── Serialización JSON ─────────────────────────────────────────
+  # Fechas como ISO 8601 UTC para que el frontend las parsee con new Date()
+  jackson:
+    time-zone: UTC
+    date-format: "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+    serialization:
+      write-dates-as-timestamps: false
+      write-dates-with-context-time-zone: true
+
+# ── Servidor ──────────────────────────────────────────────────────
+server:
+  port: 8080
+
+# ── JWT (HS256: clave UTF-8 ≥ 32 bytes) ───────────────────────────
+jwt:
+  secret: ${JWT_SECRET:catalog-demo-university-secret-key-256-bits-2024}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+# ── CORS — orígenes permitidos para el frontend ───────────────────
+app:
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://localhost:3000
+
+# ── OpenAPI / Swagger ─────────────────────────────────────────────
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs

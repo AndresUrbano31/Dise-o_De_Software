@@ -1,0 +1,40 @@
+# ================================================================
+#  DOCKER COMPOSE — Vista de Despliegue (Deployment View)
+#  Topología: contenedor Spring Boot → MongoDB Atlas (cloud)
+# ================================================================
+#
+#  La base de datos ya NO corre en un contenedor local.
+#  El proyecto usa MongoDB Atlas (nube). Solo se levanta la app.
+#
+#  Requisitos antes de arrancar:
+#    export MONGODB_URI="mongodb+srv://user:pass@biblioteca-cluster.xxxxx.mongodb.net/catalog_demo"
+#    export JWT_SECRET="tu-clave-de-al-menos-32-caracteres"
+#
+#  Comandos de uso:
+#    Arrancar:  docker-compose up --build
+#    Detener:   docker-compose down
+#    Logs:      docker-compose logs -f app
+# ================================================================
+
+version: '3.9'
+
+services:
+
+  # ── Servidor de Aplicación (Spring Boot → MongoDB Atlas) ──────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: catalog-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      MONGODB_URI:  ${MONGODB_URI}          # URI completa de Atlas (obligatorio)
+      JWT_SECRET:   ${JWT_SECRET}           # Clave JWT ≥ 32 bytes (obligatorio)
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-86400000}
+
+# ── Red interna ───────────────────────────────────────────────────
+networks:
+  default:
+    driver: bridge

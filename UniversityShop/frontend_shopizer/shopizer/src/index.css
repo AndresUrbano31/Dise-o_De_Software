@@ -1,0 +1,103 @@
+@import "@fontsource-variable/inter";
+@import "tailwindcss";
+
+/* ── Design tokens (Tailwind v4 @theme) ──────────────────────────── */
+@theme {
+  /* Brand */
+  --color-brand-primary:       hsl(217 91% 35%);
+  --color-brand-primary-hover: hsl(217 91% 30%);
+  --color-brand-accent:        hsl(38 92% 50%);
+
+  /* Semantic */
+  --color-success: hsl(142 71% 38%);
+  --color-warning: hsl(38 92% 50%);
+  --color-danger:  hsl(0 72% 51%);
+  --color-info:    hsl(199 89% 48%);
+
+  /* Shadows */
+  --shadow-soft-sm: 0 1px 2px rgba(15,23,42,.06);
+  --shadow-soft-md: 0 4px 12px rgba(15,23,42,.08);
+  --shadow-soft-lg: 0 12px 32px rgba(15,23,42,.10);
+
+  /* Typography */
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Animations */
+  --animate-fade-in-up: fadeInUp 0.45s ease-out both;
+  --animate-fade-in:    fadeIn 0.3s ease-out both;
+  --animate-scale-in:   scaleIn 0.15s ease-out both;
+  --animate-toast-in:   toastIn 0.28s ease-out both;
+}
+
+/* ── CSS variables (shadcn compat) ────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --primary: hsl(217 91% 35%);
+  --primary-foreground: #f8fafc;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: hsl(0 72% 51%);
+  --destructive-foreground: #f8fafc;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: hsl(217 91% 35%);
+  --radius: 0.5rem;
+}
+
+/* ── Keyframes ────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Global base ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+  line-height: 1.625;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Utility: hide scrollbar ──────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

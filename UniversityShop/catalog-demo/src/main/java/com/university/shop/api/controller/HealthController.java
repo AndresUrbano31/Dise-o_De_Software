@@ -1,0 +1,32 @@
+package com.university.shop.api.controller;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.time.Instant;
+import java.util.Map;
+
+/**
+ * Endpoint público de health check.
+ * Permite al frontend verificar que el backend está disponible
+ * antes de mostrar contenido al usuario.
+ */
+@RestController
+@RequestMapping("/api/v1/health")
+@Tag(name = "Health", description = "Estado del servicio")
+public class HealthController {
+
+    @GetMapping
+    @Operation(summary = "Health check", description = "Devuelve el estado actual del servicio.")
+    public ResponseEntity<Map<String, String>> health() {
+        return ResponseEntity.ok(Map.of(
+                "status",    "UP",
+                "service",   "catalog-demo",
+                "timestamp", Instant.now().toString()
+        ));
+    }
+}
