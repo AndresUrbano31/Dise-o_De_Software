@@ -24,10 +24,21 @@
 | - | fechaCreacion | LocalDateTime |
 | - | categoriaId | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| *(sin constructores explícitos — Spring Data instancia vía reflección)* | | |
+| + | obtenerId() | String |
+| + | establecerId(id) | void |
+| + | obtenerSku() | String |
+| + | establecerSku(sku) | void |
+| + | obtenerNombre() | String |
+| + | establecerNombre(nombre) | void |
+| + | obtenerPrecio() | BigDecimal |
+| + | establecerPrecio(precio) | void |
+| + | obtenerFechaCreacion() | LocalDateTime |
+| + | establecerFechaCreacion(fechaCreacion) | void |
+| + | obtenerCategoriaId() | String |
+| + | establecerCategoriaId(categoriaId) | void |
 
 ---
 
@@ -42,10 +53,15 @@
 | - | nombre | String |
 | - | descripcion | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| *(sin constructores explícitos)* | | |
+| + | obtenerId() | String |
+| + | establecerId(id) | void |
+| + | obtenerNombre() | String |
+| + | establecerNombre(nombre) | void |
+| + | obtenerDescripcion() | String |
+| + | establecerDescripcion(descripcion) | void |
 
 ---
 
@@ -67,10 +83,17 @@
 | - | fechaCreacion | LocalDateTime |
 | - | categoria | RespuestaCategoría |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
+| + | RespuestaProducto() | — |
 | + | RespuestaProducto(id, sku, nombre, precio, fechaCreacion, categoria) | — |
+| + | obtenerId() | String |
+| + | obtenerSku() | String |
+| + | obtenerNombre() | String |
+| + | obtenerPrecio() | BigDecimal |
+| + | obtenerFechaCreacion() | LocalDateTime |
+| + | obtenerCategoria() | RespuestaCategoría |
 
 ---
 
@@ -85,10 +108,14 @@
 | - | nombre | String |
 | - | descripcion | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
+| + | RespuestaCategoría() | — |
 | + | RespuestaCategoría(id, nombre, descripcion) | — |
+| + | obtenerId() | String |
+| + | obtenerNombre() | String |
+| + | obtenerDescripcion() | String |
 
 ---
 
@@ -107,10 +134,17 @@
 | - | primero | boolean |
 | - | ultimo | boolean |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | RespuestaPaginada(contenido, pagina, tamaño, totalElementos, totalPaginas, primero, ultimo) | — |
+| + | obtenerContenido() | List\<T\> |
+| + | obtenerPagina() | int |
+| + | obtenerTamaño() | int |
+| + | obtenerTotalElementos() | long |
+| + | obtenerTotalPaginas() | int |
+| + | esPrimero() | boolean |
+| + | esUltimo() | boolean |
 
 ---
 
@@ -124,10 +158,13 @@
 | - | usuario | String |
 | - | contrasena | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| *(solo getters/setters)* | | |
+| + | obtenerUsuario() | String |
+| + | establecerUsuario(usuario) | void |
+| + | obtenerContrasena() | String |
+| + | establecerContrasena(contrasena) | void |
 
 ---
 
@@ -142,10 +179,13 @@
 | - | tipo | String |
 | - | mensaje | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | RespuestaAutenticacion(token) | — |
+| + | obtenerToken() | String |
+| + | obtenerTipo() | String |
+| + | obtenerMensaje() | String |
 
 ---
 
@@ -163,11 +203,18 @@
 | - | ruta | String |
 | - | erroresCampo | List\<DetalleErrorCampo\> |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | of(estado, error, mensaje, ruta) | RespuestaError |
-| + | ofValidacion(mensaje, ruta, erroresCampo) | RespuestaError |
+| + | RespuestaError(timestamp, estado, error, mensaje, ruta, erroresCampo) | — |
+| + | timestamp() | String |
+| + | estado() | int |
+| + | error() | String |
+| + | mensaje() | String |
+| + | ruta() | String |
+| + | erroresCampo() | List\<DetalleErrorCampo\> |
+| + «static» | de(estado, error, mensaje, ruta) | RespuestaError |
+| + «static» | deValidacion(mensaje, ruta, erroresCampo) | RespuestaError |
 
 ---
 
@@ -181,10 +228,12 @@
 | - | campo | String |
 | - | mensaje | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| *(record — constructor canónico implícito)* | | |
+| + | DetalleErrorCampo(campo, mensaje) | — |
+| + | campo() | String |
+| + | mensaje() | String |
 
 ---
 
@@ -201,10 +250,11 @@
 |---|---|---|
 | - | categoriaId | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | CategoriaTieneProductos(categoriaId) | — |
+| + | obtenerCategoriaId() | String |
 
 ---
 
@@ -217,10 +267,11 @@
 |---|---|---|
 | - | nombre | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | NombreCategoriaExistente(nombre) | — |
+| + | obtenerNombre() | String |
 
 ---
 
@@ -233,10 +284,11 @@
 |---|---|---|
 | - | categoriaId | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | CategoriaNoEncontrada(categoriaId) | — |
+| + | obtenerCategoriaId() | String |
 
 ---
 
@@ -249,10 +301,11 @@
 |---|---|---|
 | - | productoId | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | ProductoNoEncontrado(productoId) | — |
+| + | obtenerProductoId() | String |
 
 ---
 
@@ -265,10 +318,11 @@
 |---|---|---|
 | - | sku | String |
 
-**Métodos principales:**
+**Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | SkuYaExiste(sku) | — |
+| + | obtenerSku() | String |
 
 ---
 
