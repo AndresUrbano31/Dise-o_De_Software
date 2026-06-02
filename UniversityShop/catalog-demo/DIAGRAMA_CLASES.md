@@ -27,18 +27,18 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | obtenerId() | String |
-| + | establecerId(id) | void |
-| + | obtenerSku() | String |
-| + | establecerSku(sku) | void |
-| + | obtenerNombre() | String |
-| + | establecerNombre(nombre) | void |
-| + | obtenerPrecio() | BigDecimal |
-| + | establecerPrecio(precio) | void |
-| + | obtenerFechaCreacion() | LocalDateTime |
-| + | establecerFechaCreacion(fechaCreacion) | void |
-| + | obtenerCategoriaId() | String |
-| + | establecerCategoriaId(categoriaId) | void |
+| + | getId() | String |
+| + | setId(id) | void |
+| + | getSku() | String |
+| + | setSku(sku) | void |
+| + | getName() | String |
+| + | setName(name) | void |
+| + | getPrice() | BigDecimal |
+| + | setPrice(price) | void |
+| + | getDateCreated() | LocalDateTime |
+| + | setDateCreated(d) | void |
+| + | getCategoryId() | String |
+| + | setCategoryId(categoryId) | void |
 
 ---
 
@@ -56,12 +56,12 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | obtenerId() | String |
-| + | establecerId(id) | void |
-| + | obtenerNombre() | String |
-| + | establecerNombre(nombre) | void |
-| + | obtenerDescripcion() | String |
-| + | establecerDescripcion(descripcion) | void |
+| + | getId() | String |
+| + | setId(id) | void |
+| + | getName() | String |
+| + | setName(name) | void |
+| + | getDescription() | String |
+| + | setDescription(desc) | void |
 
 ---
 
@@ -88,12 +88,12 @@
 |---|---|---|
 | + | RespuestaProducto() | — |
 | + | RespuestaProducto(id, sku, nombre, precio, fechaCreacion, categoria) | — |
-| + | obtenerId() | String |
-| + | obtenerSku() | String |
-| + | obtenerNombre() | String |
-| + | obtenerPrecio() | BigDecimal |
-| + | obtenerFechaCreacion() | LocalDateTime |
-| + | obtenerCategoria() | RespuestaCategoría |
+| + | getId() | String |
+| + | getSku() | String |
+| + | getName() | String |
+| + | getPrice() | BigDecimal |
+| + | getDateCreated() | LocalDateTime |
+| + | getCategory() | RespuestaCategoría |
 
 ---
 
@@ -113,9 +113,9 @@
 |---|---|---|
 | + | RespuestaCategoría() | — |
 | + | RespuestaCategoría(id, nombre, descripcion) | — |
-| + | obtenerId() | String |
-| + | obtenerNombre() | String |
-| + | obtenerDescripcion() | String |
+| + | getId() | String |
+| + | getName() | String |
+| + | getDescription() | String |
 
 ---
 
@@ -138,13 +138,13 @@
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | RespuestaPaginada(contenido, pagina, tamaño, totalElementos, totalPaginas, primero, ultimo) | — |
-| + | obtenerContenido() | List\<T\> |
-| + | obtenerPagina() | int |
-| + | obtenerTamaño() | int |
-| + | obtenerTotalElementos() | long |
-| + | obtenerTotalPaginas() | int |
-| + | esPrimero() | boolean |
-| + | esUltimo() | boolean |
+| + | getContent() | List\<T\> |
+| + | getPage() | int |
+| + | getSize() | int |
+| + | getTotalElements() | long |
+| + | getTotalPages() | int |
+| + | isFirst() | boolean |
+| + | isLast() | boolean |
 
 ---
 
@@ -161,10 +161,10 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | obtenerUsuario() | String |
-| + | establecerUsuario(usuario) | void |
-| + | obtenerContrasena() | String |
-| + | establecerContrasena(contrasena) | void |
+| + | getUsername() | String |
+| + | setUsername(username) | void |
+| + | getPassword() | String |
+| + | setPassword(password) | void |
 
 ---
 
@@ -183,9 +183,9 @@
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | RespuestaAutenticacion(token) | — |
-| + | obtenerToken() | String |
-| + | obtenerTipo() | String |
-| + | obtenerMensaje() | String |
+| + | getToken() | String |
+| + | getType() | String |
+| + | getMessage() | String |
 
 ---
 
@@ -206,15 +206,15 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | RespuestaError(timestamp, estado, error, mensaje, ruta, erroresCampo) | — |
+| + | RespuestaError(timestamp, status, error, message, path, fieldErrors) | — |
 | + | timestamp() | String |
-| + | estado() | int |
+| + | status() | int |
 | + | error() | String |
-| + | mensaje() | String |
-| + | ruta() | String |
-| + | erroresCampo() | List\<DetalleErrorCampo\> |
-| + «static» | de(estado, error, mensaje, ruta) | RespuestaError |
-| + «static» | deValidacion(mensaje, ruta, erroresCampo) | RespuestaError |
+| + | message() | String |
+| + | path() | String |
+| + | fieldErrors() | List\<DetalleErrorCampo\> |
+| + «static» | of(status, error, message, path) | RespuestaError |
+| + «static» | ofValidation(message, path, fieldErrors) | RespuestaError |
 
 ---
 
@@ -231,9 +231,9 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | DetalleErrorCampo(campo, mensaje) | — |
-| + | campo() | String |
-| + | mensaje() | String |
+| + | DetalleErrorCampo(field, message) | — |
+| + | field() | String |
+| + | message() | String |
 
 ---
 
@@ -253,8 +253,8 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | CategoriaTieneProductos(categoriaId) | — |
-| + | obtenerCategoriaId() | String |
+| + | CategoriaTieneProductos(categoryId) | — |
+| + | getCategoryId() | String |
 
 ---
 
@@ -270,8 +270,8 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | NombreCategoriaExistente(nombre) | — |
-| + | obtenerNombre() | String |
+| + | NombreCategoriaExistente(name) | — |
+| + | getName() | String |
 
 ---
 
@@ -287,8 +287,8 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | CategoriaNoEncontrada(categoriaId) | — |
-| + | obtenerCategoriaId() | String |
+| + | CategoriaNoEncontrada(categoryId) | — |
+| + | getCategoryId() | String |
 
 ---
 
@@ -304,8 +304,8 @@
 **Métodos:**
 | Visibilidad | Firma | Retorno |
 |---|---|---|
-| + | ProductoNoEncontrado(productoId) | — |
-| + | obtenerProductoId() | String |
+| + | ProductoNoEncontrado(productId) | — |
+| + | getProductId() | String |
 
 ---
 
@@ -322,7 +322,7 @@
 | Visibilidad | Firma | Retorno |
 |---|---|---|
 | + | SkuYaExiste(sku) | — |
-| + | obtenerSku() | String |
+| + | getSku() | String |
 
 ---
 
